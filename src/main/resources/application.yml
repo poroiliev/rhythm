@@ -1,0 +1,32 @@
+server:
+  servlet:
+    context-path: /api
+  port: 4242
+
+rhythm:
+  users:
+    countryHost: localhost:4242/api
+    timestamp: 1524640959
+    schedulerIntervalHrs: 6
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rhythm
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    hikari:
+      username: qwerty
+      password: qwerty
+      jdbc-url: jdbc:postgresql://localhost:5432/qwerty
+  quartz:
+    jdbc:
+      initialize-schema: always
+    job-store-type: jdbc
+    properties:
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+
+logging:
+  file: ${TMP}/rhythm/usercrossings.log
+  level:
+    com.rhythm: DEBUG
+    root: ERROR
+    org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: ERROR
